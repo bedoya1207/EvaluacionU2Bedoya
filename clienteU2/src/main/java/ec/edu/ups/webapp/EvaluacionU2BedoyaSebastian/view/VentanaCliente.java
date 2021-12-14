@@ -6,6 +6,8 @@ import java.util.List;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 
+import ec.edu.ups.pweb.demoapp.bussines.CalculadoraONRemote;
+import ec.edu.ups.webapp.EvaluacionU2BedoyaSebastian.model.vehiculo;
 import ec.edu.ups.webapp.EvalucacionU2BedoyaSebastian.bussines.VehiculoONRemote;
 
 
@@ -13,7 +15,7 @@ import ec.edu.ups.webapp.EvalucacionU2BedoyaSebastian.bussines.VehiculoONRemote;
 
 
 public class VentanaCliente {
-
+	private VehiculoONRemote vehi;
   
 	public void conectar() throws Exception {
 		try {  
@@ -31,7 +33,7 @@ public class VentanaCliente {
             final Context context = new InitialContext(jndiProperties);  
               
             final String lookupName = "ejb:/EvaluacionU2BedoyaSebastian/VehiculoON!ec.edu.ups.webapp.EvaluacionU2BedoyaSebastian.bussines.VehiculoONRemote";    
-            this.calcRemote = (VehiculoONRemote) context.lookup(lookupName);  
+            this.vehi = (VehiculoONRemote) context.lookup(lookupName);  
            
               
         } catch (Exception ex) {  
@@ -40,21 +42,13 @@ public class VentanaCliente {
         }  
 	}
 
-	public void sumar(double a, double b) {
-		double d =this.calcRemote.suma(a, b);
-		System.out.println("Suma"+ d);
-	}
-	
-	public void mostrarOperaciones() {
-		
-		List<Operacion> operaciones = this.calcRemote.getSumas();
-		for(Operacion op : operaciones) {
-			System.out.println(op.getA()+" + "+op.getB()+" = "+op.getR());
-		}
-	}
-	public void crearPersona() {
-		Persona p = new Persona();
-		p.setCedula("0106481914");
+
+	public void crearVehiculo() {
+		vehiculo p = new vehiculo();
+		p.setCodigo(1);
+		p.setPlaca("ABC-1234");
+		p.setModelo("Xtrsail");
+		p.setMarca("nissan");
 		
 	}
 	public static void main(String[] args) {
