@@ -18,8 +18,9 @@ public class VehiculoON implements VehiculoONLocal,VehiculoONRemote{
 	public void actualizar(vehiculo ve) {
 		vehiculodao.update(ve);
 	}
-	public void leer(int codigo) {
-		vehiculodao.read(codigo);
+	public vehiculo leer(int codigo) {
+		
+		return vehiculodao.read(codigo);
 	}
 	
 }

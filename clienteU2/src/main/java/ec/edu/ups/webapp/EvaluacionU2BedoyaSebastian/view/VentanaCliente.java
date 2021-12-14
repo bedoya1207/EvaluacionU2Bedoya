@@ -6,16 +6,15 @@ import java.util.List;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 
-import ec.edu.ups.pweb.demoapp.bussines.CalculadoraONRemote;
+import ec.edu.ups.webapp.EvaluacionU2BedoyaSebastian.bussines.VehiculoONRemote;
 import ec.edu.ups.webapp.EvaluacionU2BedoyaSebastian.model.vehiculo;
-import ec.edu.ups.webapp.EvalucacionU2BedoyaSebastian.bussines.VehiculoONRemote;
 
 
 
 
 
 public class VentanaCliente {
-	private VehiculoONRemote vehi;
+	private static VehiculoONRemote vehi;
   
 	public void conectar() throws Exception {
 		try {  
@@ -42,25 +41,16 @@ public class VentanaCliente {
         }  
 	}
 
+	
 
-	public void crearVehiculo() {
-		vehiculo p = new vehiculo();
-		p.setCodigo(1);
-		p.setPlaca("ABC-1234");
-		p.setModelo("Xtrsail");
-		p.setMarca("nissan");
-		
-	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		VentanaCliente vtnCalc = new VentanaCliente();
 		try {
 			vtnCalc.conectar();
-			System.out.println("entro");
-			vtnCalc.sumar(9,8);
-			vtnCalc.sumar(20,8);
-			vtnCalc.sumar(19,88);
-			vtnCalc.mostrarOperaciones();
+			Pantalla p = new  Pantalla(vehi);
+			p.setVisible(true);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -10,5 +10,5 @@ public interface VehiculoONLocal {
 
 	public void insertar (vehiculo ve);
 	public void actualizar(vehiculo ve);
-	public void leer(int codigo);
+	public vehiculo leer(int codigo);
 }
